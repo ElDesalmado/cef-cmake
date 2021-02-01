@@ -1,2 +1,3 @@
 # cef binary packages which are downloaded by cmake
 cef_binary_*
+.idea

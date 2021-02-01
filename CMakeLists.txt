@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.11.4 FATAL_ERROR)
+
 # CEF-CMake 1.0.0
 # Copyright (c) 2019 Borislav Stanimirov
 #
@@ -10,7 +12,7 @@ if(NOT CEF_CMAKE_INCLUDED)
 endif()
 
 if(NOT CEF_VERSION)
-    set(CEF_VERSION 75.1.4+g4210896+chromium-75.0.3770.100)
+    set(CEF_VERSION 88.1.6+g4fe33a1+chromium-88.0.4324.96)
     message(STATUS "CEF-CMake: CEF_VERSION not specified. Defaulting to ${CEF_VERSION}")
 endif()
 
@@ -23,8 +25,10 @@ if(NOT CEF_CMAKE_OUTPUT_DIR)
     message(STATUS "CEF-CMake: CEF_CMAKE_OUTPUT_DIR was not specified. Defaulting to CMAKE_RUNTIME_OUTPUT_DIRECTORY: ${CEF_CMAKE_OUTPUT_DIR}")
 endif()
 
-if(MSVC)
+if(GENERATOR_IS_MULTI_CONFIG)
     set(CEF_CMAKE_OUTPUT_DIR ${CEF_CMAKE_OUTPUT_DIR}/$<CONFIG>)
+else()
+    set(CEF_CMAKE_OUTPUT_DIR ${CEF_CMAKE_OUTPUT_DIR})
 endif()
 
 if(CEF_CMAKE_OS_LINUX)
